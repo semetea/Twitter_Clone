@@ -4,7 +4,7 @@ import "firebase/compat/auth"
 import "firebase/compat/firestore"
 import "firebase/compat/storage"
 import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -18,3 +18,5 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig);
 export const authService = getAuth()
+export const signIn = signInWithEmailAndPassword();
+export const createUser = createUserWithEmailAndPassword();
