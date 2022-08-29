@@ -1,7 +1,8 @@
+import { authService, firebaseInstance } from 'fbase';
 import {
-    getAuth,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    signInWithPopup
 } from 'firebase/auth';
 import React, { useState } from "react"
 
@@ -10,7 +11,6 @@ const Auth = () => {
     const [password, setPassword] = useState("");
     const [newAccount, setNewAccount] = useState(true)
     const [error, setError] = useState("")
-    const auth = getAuth();
     const onChange = (event) => {
         const { target: { name, value } } = event;
         if (name === "email") {
@@ -24,9 +24,9 @@ const Auth = () => {
         try {
             let data
             if (newAccount) {
-                data = await createUserWithEmailAndPassword(auth, email, password)
+                data = await createUserWithEmailAndPassword(authService, email, password)
             } else {
-                data = await signInWithEmailAndPassword(auth, email, password)
+                data = await signInWithEmailAndPassword(authService, email, password)
             }
             console.log(data)
         } catch (error) {
@@ -34,9 +34,19 @@ const Auth = () => {
         }
     }
 
-    const toggleAccount = () => {
-        setNewAccount(prev => !prev)
+    const toggleAccount = () => setNewAccount(prev => !prev)
+    const onSocialClick = async (event) => {
+        const { target: { name }, } = event
+        let provider;
+        if (name === "google") {
+            provider = new firebaseInstance.auth.GoogleAuthProvider()
+        } else if (name === "github") {
+            provider = new firebaseInstance.auth.GithubAuthProvider()
+        }
+        const data = await signInWithPopup(authService, provider)
+        console.log(data)
     }
+
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -47,8 +57,8 @@ const Auth = () => {
             </form>
             <span onClick={toggleAccount}>{newAccount ? "Sign In" : "Create Account"}</span>
             <div>
-                <button>Continue with Google</button>
-                <button>Continue with Github</button>
+                <button name="google" onClick={onSocialClick}>Continue with Google</button>
+                <button name="github" onClick={onSocialClick}>Continue with Github</button>
             </div>
         </div>
     )
