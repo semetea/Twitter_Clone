@@ -1,39 +1,36 @@
 import { dbServiece } from "fbase";
 import React, { useEffect, useState } from "react"
 
-const Home = () => {
+const Home = ({ userObj }) => {
     // Variable
     const [nweet, setNweet] = useState("")
     const [nweets, setNweets] = useState([])
 
     // Method
-    const getNweets = async () => {
-        const dbNweets = await dbServiece.collection("nweets").get();
-        dbNweets.forEach(document => {
-            const nweetObject = {
-                ...document.data(),
-                id: document.id
-            }
-            setNweets(prev => [nweetObject, ...prev])
-        })
-    }
+
 
     useEffect(() => {
-        getNweets();
-    }, [])
+        dbServiece.collection("nweets").onSnapshot(snapshot => {
+            const nweetArray = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+            console.log(nweetArray)
+            setNweets(nweetArray)
+            console.log(nweets)
+        });
+    }, []);
 
     const onSubmit = async (event) => {
         event.preventDefault()
         await dbServiece.collection("nweets").add({
-            nweet,
-            createdAt: Date.now()
-        })
+            text: nweet,
+            createdAt: Date.now(),
+            creatorId: userObj.uid
+        });
         setNweet("");
     }
 
     const onChange = (event) => {
         const { target: { value } } = event
-        setNweet(value)
+        setNweet(value);
     }
     return (
         <div>
@@ -42,9 +39,9 @@ const Home = () => {
                 <input type="submit" value="Nweet" />
             </form>
             <div>
-                {nweets.map((nweet) => (
-                    <div key={nweet.id}>
-                        <h4>{nweet.nweet}</h4>
+                {nweets.map((n) => (
+                    <div key={n.id}>
+                        <h4>{n.text}</h4>
                     </div>
                 ))}
             </div>
