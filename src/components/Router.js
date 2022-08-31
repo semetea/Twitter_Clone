@@ -26,7 +26,6 @@ const AppRouter = ({ isLoggedIn }) => {
                         <Redirect from="*" to="/" />
                     </>
                 }
-
             </Switch>
         </Router>
     )

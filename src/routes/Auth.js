@@ -19,6 +19,7 @@ const Auth = () => {
             setPassword(value)
         }
     }
+
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
