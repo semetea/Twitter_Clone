@@ -9,8 +9,13 @@ const Home = () => {
     // Method
     const getNweets = async () => {
         const dbNweets = await dbServiece.collection("nweets").get();
-        dbNweets.forEach(document => console.log(document.data))
-        console.log(dbNweets)
+        dbNweets.forEach(document => {
+            const nweetObject = {
+                ...document.data(),
+                id: document.id
+            }
+            setNweets(prev => [nweetObject, ...prev])
+        })
     }
 
     useEffect(() => {
@@ -30,13 +35,19 @@ const Home = () => {
         const { target: { value } } = event
         setNweet(value)
     }
-
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <input value={nweet} type="text" onChange={onChange} placeholder="What's on your mind?" maxLength={120} />
                 <input type="submit" value="Nweet" />
             </form>
+            <div>
+                {nweets.map((nweet) => (
+                    <div key={nweet.id}>
+                        <h4>{nweet.nweet}</h4>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 };
