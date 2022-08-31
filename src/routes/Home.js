@@ -1,3 +1,4 @@
+import Nweet from "components/Nweet";
 import { dbServiece } from "fbase";
 import React, { useEffect, useState } from "react"
 
@@ -10,11 +11,9 @@ const Home = ({ userObj }) => {
 
 
     useEffect(() => {
-        dbServiece.collection("nweets").onSnapshot(snapshot => {
+        dbServiece.collection("nweets").onSnapshot(snapshot => {    // snapshot
             const nweetArray = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-            console.log(nweetArray)
             setNweets(nweetArray)
-            console.log(nweets)
         });
     }, []);
 
@@ -32,6 +31,7 @@ const Home = ({ userObj }) => {
         const { target: { value } } = event
         setNweet(value);
     }
+    
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -39,10 +39,8 @@ const Home = ({ userObj }) => {
                 <input type="submit" value="Nweet" />
             </form>
             <div>
-                {nweets.map((n) => (
-                    <div key={n.id}>
-                        <h4>{n.text}</h4>
-                    </div>
+                {nweets.map((nweet) => (
+                    <Nweet key={nweet.id} nweetObj={nweet} isOwner={nweet.creatorId === userObj.uid} />
                 ))}
             </div>
         </div>
