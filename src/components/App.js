@@ -13,13 +13,15 @@ function App() {
           uid: user.uid,
           updateProfile: (args) => user.updateProfile(args),
         });
+      } else {
+        setUserObj(null);
       }
       setInit(true);
     });
   }, []);
 
   const refreshUser = () => {
-    // firebase에서 user를 refresh해줘서
+    // firebase에서 user를 refresh해줌
     const user = authService.currentUser;
     setUserObj({
       displayName: user.displayName,
