@@ -31,7 +31,7 @@ const Profile = ({ refreshUser, userObj }) => {
   };
 
   useEffect(() => {
-    getMyNweets();
+    //getMyNweets();
   });
 
   const onChange = (event) => {
