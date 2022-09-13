@@ -1,5 +1,8 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   box-sizing: border-box;
 }
