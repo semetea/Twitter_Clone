@@ -46,5 +46,10 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://semetea.github.io/Twitter_Clone"
+  "homepage": "https://semetea.github.io/Twitter_Clone",
+  "devDependencies": {
+    "autoprefixer": "^10.4.10",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8"
+  }
 }
