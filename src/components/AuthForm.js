@@ -6,7 +6,7 @@ import {
 import React from "react";
 import { useState } from "react";
 
-const AuthForm = () => {
+const AuthForm = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
@@ -44,35 +44,44 @@ const AuthForm = () => {
   const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <>
-      <form onSubmit={onSubmit} className="container">
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={onChange}
-          className="authInput"
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-          className="authInput"
-        />
-        <input
-          type="submit"
-          className="authInput authSubmit"
-          value={newAccount ? "Create Account" : "Sign In"}
-        />
+      <form onSubmit={onSubmit} className="container flex flex-col">
+        <div>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            required
+            value={email}
+            onChange={onChange}
+            className="authInput"
+          />
+        </div>
+        <div>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            value={password}
+            onChange={onChange}
+            className="authInput"
+          />
+        </div>
+        <div>
+          <input
+            type="submit"
+            className="authInput authSubmit"
+            value={newAccount ? "Create Account" : "Sign In"}
+          />
+        </div>
         {error && <span className="authError">{error}</span>}
+        <span onClick={toggleAccount} className="authSwitch">
+          {newAccount ? "Sign In" : "Create Account"}
+        </span>
       </form>
-      <span onClick={toggleAccount} className="authSwitch">
-        {newAccount ? "Sign In" : "Create Account"}
-      </span>
+      <button className="authCancel" onClick={() => closeModal(false)}>
+        Cancel
+      </button>
     </>
   );
 };
