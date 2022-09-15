@@ -48,8 +48,8 @@ const Auth = () => {
           </svg>
         </div>
 
-        <div className="w-2/5">
-          <div className="my-44">
+        <div className="w-2/5 mt-7 ml-3">
+          <div className="w-full">
             <div className="flex flex-col ml-4">
               <div className="h-1/10">
                 <FontAwesomeIcon
@@ -60,11 +60,11 @@ const Auth = () => {
                 />
               </div>
               <div className="h-3/10 my-5 font-bold text-left">
-                <span className="text-6xl">Happening now</span>
+                <span className="text-7xl">Happening now</span>
               </div>
               <div>
                 <div className="h-1/10 my-5">
-                  <span className="font-bold text-2xl">
+                  <span className="font-bold text-3xl">
                     Join Twitter today.
                   </span>
                 </div>
@@ -76,7 +76,7 @@ const Auth = () => {
                         name="google"
                         className="socialLogin"
                       >
-                        Continue with Google <FontAwesomeIcon icon={faGoogle} />
+                        <FontAwesomeIcon icon={faGoogle} /> Sign up with Google
                       </button>
                     </div>
                     <div>
@@ -85,7 +85,7 @@ const Auth = () => {
                         name="github"
                         className="socialLogin"
                       >
-                        Continue with Github <FontAwesomeIcon icon={faGithub} />
+                        <FontAwesomeIcon icon={faGithub} /> Sign up with Github
                       </button>
                     </div>
                     <div className="flex justify-center w-1/2">
@@ -93,7 +93,7 @@ const Auth = () => {
                     </div>
                     <div className="flex justify-center w-1/2">
                       <button onClick={onModalClick} className="ModalBtn">
-                        Sign up with phone or email
+                        Sign up with email
                       </button>
                     </div>
                   </div>

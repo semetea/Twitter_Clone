@@ -37,9 +37,9 @@
 }
 
 .socialLogin {
-  @apply border my-1 rounded-2xl border-gray-400 w-1/2 text-xl font-semibold;
+  @apply border my-1 rounded-2xl border-gray-400 w-1/2 text-lg font-semibold h-9 border-gray-300;
 }
 
 .ModalBtn {
-  @apply cursor-pointer my-2 border rounded-2xl w-full p-1 bg-blue-400 text-white font-semibold;
+  @apply cursor-pointer my-2 border rounded-2xl w-full p-1 bg-blue-500 py-2 text-white font-semibold;
 }

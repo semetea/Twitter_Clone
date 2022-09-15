@@ -57,10 +57,13 @@ const NweetFactory = ({ userObj }) => {
   const onClearAttachment = () => setAttachment("");
 
   return (
-    <form onSubmit={onSubmit} className="factoryForm">
-      <div className="factoryInput__container">
+    <form onSubmit={onSubmit} className="border p-5 flex flex-col">
+      <div>
+        <span className="mb-5">Home</span>
+      </div>
+      <div>
         <input
-          className="factoryInput__input"
+          className="w-full"
           value={nweet}
           onChange={onChange}
           type="text"
@@ -69,19 +72,21 @@ const NweetFactory = ({ userObj }) => {
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
       </div>
-      <label htmlFor="attach-file" className="factoryInput__label">
-        <span>Add photos</span>
-        <FontAwesomeIcon icon={faPlus} />
-      </label>
-      <input
-        id="attach-file"
-        type="file"
-        accept="image/*"
-        onChange={onFileChange}
-        style={{
-          opacity: 0,
-        }}
-      />
+      <div>
+        <label htmlFor="attach-file" className="factoryInput__label">
+          <span>hello</span>
+          <input
+            id="attach-file"
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+            style={{
+              opacity: 0,
+            }}
+          />
+        </label>
+      </div>
+
       {attachment && (
         <div className="factoryForm__attachment">
           <img

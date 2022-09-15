@@ -5,34 +5,36 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = ({ userObj }) => (
-  <nav>
-    <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
-      <li key="Home">
-        <Link to="/" style={{ marginRight: 10 }}>
-          <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
-        </Link>
-      </li>
-      <li key="Profile">
-        <Link
-          to="/profile"
-          style={{
-            marginLeft: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            fontSize: 12,
-          }}
-        >
-          <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
-          <span style={{ marginTop: 10 }}>
-            {userObj.displayName
-              ? `${userObj.displayName}'s Profile`
-              : "Profile"}
-          </span>
-        </Link>
-      </li>
-    </ul>
-  </nav>
+  <div className="w-1/3">
+    <nav>
+      <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
+        <li key="Home">
+          <Link to="/" style={{ marginRight: 10 }}>
+            <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+          </Link>
+        </li>
+        <li key="Profile">
+          <Link
+            to="/profile"
+            style={{
+              marginLeft: 10,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              fontSize: 12,
+            }}
+          >
+            <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
+            <span style={{ marginTop: 10 }}>
+              {userObj.displayName
+                ? `${userObj.displayName}'s Profile`
+                : "Profile"}
+            </span>
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  </div>
 );
 
 export default Navigation;
