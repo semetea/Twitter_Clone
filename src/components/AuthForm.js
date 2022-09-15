@@ -70,7 +70,7 @@ const AuthForm = ({ closeModal }) => {
         <div>
           <input
             type="submit"
-            className="authInput authSubmit"
+            className="authSubmit"
             value={newAccount ? "Create Account" : "Sign In"}
           />
         </div>
@@ -79,9 +79,6 @@ const AuthForm = ({ closeModal }) => {
           {newAccount ? "Sign In" : "Create Account"}
         </span>
       </form>
-      <button className="authCancel" onClick={() => closeModal(false)}>
-        Cancel
-      </button>
     </>
   );
 };

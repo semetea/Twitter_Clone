@@ -28,6 +28,7 @@ const Auth = () => {
 
   const onModalClick = () => {
     setModlaClick(true);
+    console.log("click");
   };
 
   return (
@@ -49,7 +50,7 @@ const Auth = () => {
 
         <div className="w-2/5">
           <div className="my-44">
-            <div className="flex flex-col">
+            <div className="flex flex-col ml-4">
               <div className="h-1/10">
                 <FontAwesomeIcon
                   icon={faTwitter}
@@ -58,43 +59,43 @@ const Auth = () => {
                   style={{ marginBottom: 30 }}
                 />
               </div>
-              <div className="h-3/10 my-5 font-bold text-center">
-                <span className="text-4xl">Happening now</span>
-              </div>
-              <div className="h-1/10 my-5 ">
-                <span className="font-bold text-2xl">Join Twitter today.</span>
+              <div className="h-3/10 my-5 font-bold text-left">
+                <span className="text-6xl">Happening now</span>
               </div>
               <div>
+                <div className="h-1/10 my-5">
+                  <span className="font-bold text-2xl">
+                    Join Twitter today.
+                  </span>
+                </div>
                 <div>
                   <div>
-                    <button
-                      onClick={onSocialClick}
-                      name="google"
-                      className="border rounded-2xl border-gray-400 w-full text-xl font-semibold"
-                    >
-                      Continue with Google <FontAwesomeIcon icon={faGoogle} />
-                    </button>
-                  </div>
-                  <div>
-                    <button onClick={onSocialClick} name="github">
-                      Continue with Github <FontAwesomeIcon icon={faGithub} />
-                    </button>
-                  </div>
-                  <div className="flex flex-row">
-                    <div className="justify-center">
-                      <div className="h-px bg-gray-300"></div>
+                    <div>
+                      <button
+                        onClick={onSocialClick}
+                        name="google"
+                        className="socialLogin"
+                      >
+                        Continue with Google <FontAwesomeIcon icon={faGoogle} />
+                      </button>
                     </div>
                     <div>
+                      <button
+                        onClick={onSocialClick}
+                        name="github"
+                        className="socialLogin"
+                      >
+                        Continue with Github <FontAwesomeIcon icon={faGithub} />
+                      </button>
+                    </div>
+                    <div className="flex justify-center w-1/2">
                       <span>or</span>
                     </div>
-                    <div className="justify-center">
-                      <div className="h-px bg-gray-300"></div>
+                    <div className="flex justify-center w-1/2">
+                      <button onClick={onModalClick} className="ModalBtn">
+                        Sign up with phone or email
+                      </button>
                     </div>
-                  </div>
-                  <div>
-                    <button onClick={onModalClick}>
-                      Sign up with phone or email
-                    </button>
                   </div>
                 </div>
                 {modalClick && <Modal closeModal={setModlaClick} />}

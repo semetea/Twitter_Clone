@@ -35,3 +35,11 @@
 .authCancel {
   @apply text-red-600;
 }
+
+.socialLogin {
+  @apply border my-1 rounded-2xl border-gray-400 w-1/2 text-xl font-semibold;
+}
+
+.ModalBtn {
+  @apply cursor-pointer my-2 border rounded-2xl w-full p-1 bg-blue-400 text-white font-semibold;
+}
