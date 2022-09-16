@@ -21,9 +21,9 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container flex flex-col">
       <NweetFactory userObj={userObj} />
-      <div style={{ marginTop: 30 }}>
+      <div>
         {nweets.map((nweet) => (
           <Nweet
             key={nweet.id}

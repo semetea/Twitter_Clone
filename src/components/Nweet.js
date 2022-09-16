@@ -33,7 +33,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
   };
 
   return (
-    <div className="nweet">
+    <div className="">
       {editing ? (
         <>
           <form onSubmit={onSubmit} className="container nweetEdit">
@@ -54,18 +54,24 @@ const Nweet = ({ nweetObj, isOwner }) => {
         </>
       ) : (
         <>
-          <h4>{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
-          {isOwner && (
-            <div className="nweet__actions">
-              <span onClick={onDeleteClick}>
-                <FontAwesomeIcon icon={faTrash} />
-              </span>
-              <span onClick={toggleEditing}>
-                <FontAwesomeIcon icon={faPencilAlt} />
-              </span>
+          <div className="border p-5 flex justify-between">
+            <div>
+              <h4>{nweetObj.text}</h4>
             </div>
-          )}
+            <div>
+              {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
+            </div>
+            {isOwner && (
+              <div>
+                <span onClick={toggleEditing} className="mx-1">
+                  <FontAwesomeIcon icon={faPencilAlt} />
+                </span>
+                <span onClick={onDeleteClick} className="mx-1">
+                  <FontAwesomeIcon icon={faTrash} />
+                </span>
+              </div>
+            )}
+          </div>
         </>
       )}
     </div>
